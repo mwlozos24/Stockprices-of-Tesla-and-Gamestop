@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <base href="/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs environment for data science with Jupyter, R, and Scala.">
+  <title>Skills Network Labs</title>
+  <script src="/static/react-dist/iframeComms.js"></script>
+  <script>
+    !function () { const e = ['debug', 'destroy', 'do', 'help', 'identify', 'is', 'off', 'on', 'ready', 'render', 'reset', 'safe', 'set']; if (window.noticeable) console.warn('Noticeable SDK code snippet loaded more than once'); else { const n = function (e) { return function () { const n = Array.prototype.slice.call(arguments); return n.unshift(e), t.push(n), t } }; var t = window.noticeable = window.noticeable || []; !function () { for (let o = 0; o < e.length; o++) { const r = e[o]; t[r] = n(r) } }(), function () { const e = document.createElement('script'); e.async = !0, e.src = 'https://sdk.noticeable.io/l.js'; const n = document.head; n.insertBefore(e, n.firstChild) }() } }();
+  </script>
+  <script type="module" crossorigin src="/static/react-dist/index-67104d9d.js"></script>
+  <link rel="stylesheet" href="/static/react-dist/index-93ac409b.css">
+</head>
+
+<body style="overflow: hidden;">
+  <div id="root"></div>
+  
+
+  <script>
+    // access the variables passed from the flask backend and put them to the window object
+    window.data = {"default_heartbeat_time": 1800, "iframe_src": "https://jupyterlab-2-labs-prod-jupyterlab-us-east-0.labs.cognitiveclass.ai/oauth_login?next=%2Fhub%2Fspawn%3Fstorage%3Dcosfs%26next%3D%252Fuser-redirect%252Flab%252Ftree%252Flabs%252Fproject%252FFinal%2BAssignment%2BWebscraping.ipynb%253Fmode%253Dlearn%2526env_type%253Djupyterlab", "inactive_logout_time": 60, "messaging_domain": "messaging.skills.network", "tai_enabled": true, "tai_feedback_nats_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJzbiIsInByb2dyYW0iOiJsYWJzIiwicHJvamVjdCI6Imp1cHl0ZXJsYWIiLCJvcHRpb25zIjp7InBlcm1pdHRlZEFjdGlvbnMiOlsiY2hhdC5mZWVkYmFjay5wb3NpdGl2ZSIsImNoYXQuZmVlZGJhY2submVnYXRpdmUiXSwicGVybWl0dGVkRGF0YSI6WyJ0YWlDaGF0SWQiLCJhaU1lc3NhZ2VDb250ZW50IiwidXNlck1lc3NhZ2VDb250ZW50IiwiZmVlZGJhY2tDb250ZW50Il0sInBlcm1pdHRlZFR5cGUiOiJ1c2VyIiwicGVybWl0dGVkVXNlcm5hbWUiOiJtd2xvem9zMjQifSwiaWF0IjoxNzE4MjM5Nzk0fQ._kuKb0ejW3ZsSsfRCrUcuIPwkvivDPBYZNWHiNFX6zs", "tai_watsonx_ai_enabled": false, "username": "mwlozos24", "websocket_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVzSW4iOiIyNGgiLCJ0b29sIjoianVweXRlcmxhYiIsInVzZXJuYW1lIjoibXdsb3pvczI0IiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE3MTgyMzk3NzUsImV4cCI6MTcxODMyNjE3NX0.RpJOvai0EEFEFl9ZEjfJpEb0AtVwXFyUtZIEdPPBwgs", "websocket_url": "https://websocket-service.skills.network"}; // ignore error, just jinja syntax
+
+  </script>
+  <script>
+    window.addEventListener('load', function () {
+      var interval = window.data.default_heartbeat_time * 1000;
+      setInterval(function () {
+        console.log("Posting one heartbeat.");
+        var heartbeatRequest = new XMLHttpRequest();
+        var url = '/heartbeat'; // assume url starts with a slash
+        // Edge doesn't like posting to just /heartbeat
+        // Edge also might not like window.location.origin
+        if (!(window && window.location && window.location.host)) {
+          // We might be running after someone did a File > Save As
+          // In which case we might as well give up
+          return false;
+        }
+        url = (window.location.protocol + '//' + window.location.host + url);
+        heartbeatRequest.open('POST', url, true);
+        // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        heartbeatRequest.send(null);
+
+        // // refresh Google Analytics
+        // if (typeof ga !== 'undefined') {
+        //     ga('send', 'event', 'Heartbeat', 'heartbeat');
+        // }
+      }, interval);
+    });
+  </script>
+</body>
+
+</html>
